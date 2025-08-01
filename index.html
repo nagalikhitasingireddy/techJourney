@@ -4,199 +4,171 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Dashboard</title>
-
-  <!-- Fonts and Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(145deg, #1e0050, #3d0073);
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      background: -webkit-linear-gradient(#4afefb, #3f92ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    header p {
-      color: #a7f5ff;
-      font-size: 1rem;
-    }
-
-    #clock {
-      text-align: center;
-      color: #63fff9;
-      font-size: 1rem;
-      margin-top: 0.5rem;
+      background: linear-gradient(135deg, #2e005a, #3f006c);
+      color: white;
+      padding: 30px;
     }
 
     .dashboard {
-      max-width: 90%;
-      margin: 2rem auto;
-      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .dashboard h1 {
+      font-size: 3rem;
+      color: #7b78ff;
+    }
+
+    .dashboard p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #cfcfcf;
+    }
+
+    .time {
+      margin-top: 10px;
+      color: #00e6e6;
+    }
+
+    .tabs {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .content {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
     }
 
     .card {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      gap: 2rem;
-      box-shadow: 0 0 20px #00ffff33;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    .card div h3 {
-      color: #00ffee;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+    .section {
+      flex: 1;
+      min-width: 200px;
     }
 
-    .card div p {
-      font-size: 0.95rem;
-      color: #d4faff;
+    .mistake {
+      background-color: #6c2c2c;
+      padding: 10px;
+      border-radius: 8px;
+      color: #ffb3b3;
+      margin: 10px 0;
     }
 
-    .badge {
-      align-self: center;
-      justify-self: center;
-      padding: 0.7rem 1.5rem;
-      border-radius: 25px;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
-
-    .success {
-      background-color: rgba(0, 255, 100, 0.15);
-      color: #00ff6e;
-      border: 1px solid #00ff6e99;
-    }
-
-    .failure {
-      background-color: rgba(255, 77, 77, 0.15);
-      color: #ff4d4d;
-      border: 1px solid #ff4d4d99;
+    .status {
+      background-color: #0f3d2e;
+      color: #00ffbf;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
     }
 
     .media img {
-      width: 100px;
-      height: 70px;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 1px solid #00ffe044;
+      width: 100%;
+      max-width: 150px;
+      border-radius: 8px;
+    }
+
+    .description {
+      color: #ccc;
     }
 
     @media (max-width: 768px) {
       .card {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .media img {
-        margin: auto;
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-
-<div id="particles-js"></div>
-
-<header>
-  <h1>Learning Dashboard</h1>
-  <p>Track your progress, mistakes, and achievements</p>
-  <div id="clock">Current Time: --:--:--</div>
-</header>
-
-<div class="dashboard">
-  <div class="card">
-    <div><h3>What I Learned</h3><p>React Hooks and State Management</p></div>
-    <div><h3>Mistakes I Made</h3><p>Forgot to add dependency array in useEffect</p></div>
-    <div class="media"><h3>Media</h3><img src="https://i.imgur.com/xXJhVFF.png" alt="NodeJS" /></div>
-    <div><h3>Description</h3><p>Deep dive into React hooks and useEffect lifecycle</p></div>
-    <div class="badge success">Success</div>
-    <div><h3>Date</h3><p>01-Aug-2025</p></div>
+  <div class="dashboard">
+    <h1>Learning Dashboard</h1>
+    <p>Track your progress, mistakes, and achievements</p>
+    <div class="time" id="time">Current Time: --:--:--</div>
   </div>
 
-  <div class="card">
-    <div><h3>What I Learned</h3><p>CSS Grid and Flexbox Mastery</p></div>
-    <div><h3>Mistakes I Made</h3><p>Used absolute positioning instead of grid</p></div>
-    <div class="media"><h3>Media</h3><img src="https://i.imgur.com/mXpjIbb.png" alt="CSS" /></div>
-    <div><h3>Description</h3><p>Built responsive layouts using Grid and Flexbox</p></div>
-    <div class="badge success">Success</div>
-    <div><h3>Date</h3><p>31-Jul-2025</p></div>
+  <div class="tabs">
+    <div class="tab">📘 What I Learned</div>
+    <div class="tab">⚠️ Mistakes I Made</div>
+    <div class="tab">📸 Media</div>
+    <div class="tab">📝 Description</div>
+    <div class="tab">✅ Status</div>
   </div>
-</div>
 
-<script>
-  // Live clock
-  function updateClock() {
-    const now = new Date();
-    document.getElementById("clock").textContent = `Current Time: ${now.toLocaleTimeString()}`;
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
+  <div class="content">
+    <div class="card">
+      <div class="section">
+        <h3>React Hooks and State Management</h3>
+        <div class="mistake">⚠️ Forgot to add dependency array in useEffect</div>
+      </div>
+      <div class="section media">
+        <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" alt="media" />
+      </div>
+      <div class="section description">
+        <p>Deep dive into React hooks, understanding useEffect lifecycle and proper state management patterns.</p>
+      </div>
+      <div class="section status">
+        ✅ Success
+      </div>
+    </div>
 
-  // Particle background
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 60 },
-      color: { value: "#00ffff" },
-      shape: { type: "circle" },
-      opacity: { value: 0.3 },
-      size: { value: 3 },
-      line_linked: {
-        enable: true,
-        distance: 130,
-        color: "#00ffff",
-        opacity: 0.25,
-        width: 1,
-      },
-      move: {
-        enable: true,
-        speed: 2,
-        direction: "none",
-        out_mode: "bounce",
-      },
-    },
-    interactivity: {
-      events: {
-        onhover: { enable: true, mode: "repulse" },
-        onclick: { enable: true, mode: "push" },
-      },
-      modes: {
-        repulse: { distance: 100 },
-        push: { quantity: 4 },
-      },
-    },
-    retina_detect: true,
-  });
-</script>
+    <div class="card">
+      <div class="section">
+        <h3>CSS Grid and Flexbox Mastery</h3>
+        <div class="mistake">⚠️ Used absolute positioning instead of grid</div>
+      </div>
+      <div class="section media">
+        <img src="https://cdn-icons-png.flaticon.com/512/919/919826.png" alt="media" />
+      </div>
+      <div class="section description">
+        <p>Mastered responsive layouts using CSS Grid and Flexbox for modern web applications.</p>
+      </div>
+      <div class="section status">
+        ✅ Success
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      document.getElementById("time").innerText =
+        "Current Time: " + now.toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
 </body>
 </html>
