@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Tech Journey Log</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Fonts & Particles -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Orbitron', sans-serif;
       background-color: #0a0f1c;
       color: #00ffcc;
@@ -31,142 +35,210 @@
     h1 {
       text-align: center;
       font-size: 3rem;
-      padding: 2rem 0 1rem;
+      margin: 2rem 0 0.5rem;
       text-shadow: 0 0 10px #00ffccaa;
     }
 
-    .container {
-      width: 95%;
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(0, 255, 204, 0.05);
-      border: 1px solid #00ffcc44;
-      border-radius: 20px;
-      padding: 2rem;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 20px #00ffcc22;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 1rem;
-    }
-
-    th, td {
-      padding: 1.2rem;
-      text-align: left;
-      border-radius: 12px;
-      background: rgba(0, 255, 204, 0.07);
-      box-shadow: 0 0 5px #00ffcc22;
-    }
-
-    th {
-      text-transform: uppercase;
-      font-size: 1rem;
-      color: #00ffe1;
-      background: rgba(0, 255, 204, 0.12);
-    }
-
-    td.status-success {
-      color: #00ff6e;
-      font-weight: bold;
-    }
-
-    td.status-failure {
-      color: #ff4b5c;
-      font-weight: bold;
-    }
-
-    tr:hover td {
-      background: rgba(0, 255, 204, 0.1);
-    }
-
-    footer {
+    #clock {
       text-align: center;
-      padding: 2rem;
-      font-size: 1rem;
-      color: #00ffcc99;
+      font-size: 1.2rem;
+      color: #00ffeeaa;
+      margin-bottom: 2rem;
     }
 
-    @media (max-width: 768px) {
-      table, th, td {
-        font-size: 0.85rem;
+    .card-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      background: rgba(0, 255, 204, 0.07);
+      border: 1px solid #00ffcc33;
+      border-radius: 20px;
+      padding: 1.5rem;
+      gap: 1rem;
+      box-shadow: 0 0 20px #00ffcc22;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #00ffe0;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #c0fff8;
+    }
+
+    .badge {
+      align-self: center;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .success {
+      background: #00ff6e33;
+      color: #00ff6e;
+      border: 1px solid #00ff6e88;
+    }
+
+    .failure {
+      background: #ff4b5c33;
+      color: #ff4b5c;
+      border: 1px solid #ff4b5c88;
+    }
+
+    .media {
+      max-width: 100px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid #00ffcc55;
+    }
+
+    @media (max-width: 900px) {
+      .card {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
 
-      h1 {
-        font-size: 2rem;
+      .media {
+        margin: auto;
       }
     }
   </style>
 </head>
 <body>
-  <div id="particles-js"></div>
 
-  <h1>🚀 My Daily Tech Journal</h1>
+<div id="particles-js"></div>
 
-  <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>DATE</th>
-          <th>What I Learned</th>
-          <th>Mistakes I Made</th>
-          <th>Description</th>
-          <th>Work of Proof</th>
-          <th>Day Throughput</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>01-Aug-2025</td>
-          <td>Spring Security JWT</td>
-          <td>Skipped token validation</td>
-          <td>Protected REST endpoints</td>
-          <td>GitHub commit</td>
-          <td class="status-success">Success</td>
-        </tr>
-       
-      </tbody>
-    </table>
+<h1>Learning Dashboard</h1>
+<div id="clock">Current Time: --:--:--</div>
+
+<div class="card-container">
+  <div class="card">
+    <div>
+      <h3>What I Learned</h3>
+      <p>React Hooks and State Management</p>
+    </div>
+    <div>
+      <h3>Mistakes I Made</h3>
+      <p>Forgot to add dependency array in useEffect</p>
+    </div>
+    <div>
+      <h3>Media</h3>
+      <img src="https://i.imgur.com/xXJhVFF.png" alt="NodeJS" class="media" />
+    </div>
+    <div>
+      <h3>Description</h3>
+      <p>Deep dive into React hooks, understanding useEffect lifecycle.</p>
+    </div>
+    <div class="badge success">Success</div>
   </div>
 
-  <footer>Created by <strong>Likhita</strong> | GitHub & Dev Portfolio ❤️</footer>
+  <div class="card">
+    <div>
+      <h3>What I Learned</h3>
+      <p>CSS Grid and Flexbox Mastery</p>
+    </div>
+    <div>
+      <h3>Mistakes I Made</h3>
+      <p>Used absolute positioning instead of grid</p>
+    </div>
+    <div>
+      <h3>Media</h3>
+      <img src="https://i.imgur.com/mXpjIbb.png" alt="Code Example" class="media" />
+    </div>
+    <div>
+      <h3>Description</h3>
+      <p>Mastered layout systems for responsive design.</p>
+    </div>
+    <div class="badge success">Success</div>
+  </div>
 
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 80 },
-        "color": { "value": "#00ffcc" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.25 },
-        "size": { "value": 3 },
-        "line_linked": {
-          "enable": true,
-          "distance": 120,
-          "color": "#00ffcc",
-          "opacity": 0.3,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "out_mode": "bounce"
-        }
+  <div class="card">
+    <div>
+      <h3>What I Learned</h3>
+      <p>Spring Boot Email Verification</p>
+    </div>
+    <div>
+      <h3>Mistakes I Made</h3>
+      <p>Forgot to enable SMTP access</p>
+    </div>
+    <div>
+      <h3>Media</h3>
+      <img src="https://i.imgur.com/aa4oSJm.png" alt="Spring" class="media" />
+    </div>
+    <div>
+      <h3>Description</h3>
+      <p>Successfully added token-based verification with JavaMailSender.</p>
+    </div>
+    <div class="badge failure">Failure</div>
+  </div>
+</div>
+
+<script>
+  // Live clock
+  function updateTime() {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString();
+    document.getElementById("clock").textContent = "Current Time: " + timeStr;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+
+  // Particle Background
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 70 },
+      color: { value: "#00ffcc" },
+      shape: { type: "circle" },
+      opacity: { value: 0.25 },
+      size: { value: 3 },
+      line_linked: {
+        enable: true,
+        distance: 120,
+        color: "#00ffcc",
+        opacity: 0.3,
+        width: 1
       },
-      "interactivity": {
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "repulse": { "distance": 100 },
-          "push": { "quantity": 4 }
-        }
+      move: {
+        enable: true,
+        speed: 1.5,
+        direction: "none",
+        out_mode: "bounce"
+      }
+    },
+    interactivity: {
+      events: {
+        onhover: { enable: true, mode: "repulse" },
+        onclick: { enable: true, mode: "push" }
       },
-      "retina_detect": true
-    });
-  </script>
+      modes: {
+        repulse: { distance: 100 },
+        push: { quantity: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+
 </body>
 </html>
