@@ -13,26 +13,22 @@
       box-sizing: border-box;
     }
 
-    body {
+    body, html {
+      height: 100%;
+      overflow: hidden;
       font-family: 'Roboto', sans-serif;
-      height: 100vh;
-      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
-      background-size: 400% 400%;
-      animation: gradientMove 12s ease infinite;
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       width: 95%;
       max-width: 1200px;
       background: rgba(255, 255, 255, 0.08);
@@ -40,6 +36,8 @@
       backdrop-filter: blur(12px);
       padding: 3rem;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+      margin: 4rem auto;
+      color: #fff;
     }
 
     h1 {
@@ -105,51 +103,86 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>🚀 My Daily Tech Journal</h1>
+<div id="tsparticles"></div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>What I Learned</th>
-          <th>Mistakes I Made</th>
-          <th>Description</th>
-          <th>Work of Proof</th>
-          <th>Day Throughput</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Spring Security JWT</td>
-          <td>Skipped exception handling</td>
-          <td>Secured REST API with roles</td>
-          <td>GitHub repo commit</td>
-          <td class="status-success">Success</td>
-        </tr>
-        <tr>
-          <td>JPA Pagination</td>
-          <td>Improper DTO mapping</td>
-          <td>Implemented paged user list</td>
-          <td>Screenshot & code demo</td>
-          <td class="status-success">Success</td>
-        </tr>
-        <tr>
-          <td>Docker Networking</td>
-          <td>Wrong bridge mode used</td>
-          <td>Connected microservices in Docker</td>
-          <td>Video log</td>
-          <td class="status-failure">Failure</td>
-        </tr>
-        <tr>
-          <td>React Props vs State</td>
-          <td>Used state for static data</td>
-          <td>Built reusable component</td>
-          <td>Deployed frontend on GitHub Pages</td>
-          <td class="status-success">Success</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="container">
+  <h1>🚀 My Daily Tech Journal</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>What I Learned</th>
+        <th>Mistakes I Made</th>
+        <th>Description</th>
+        <th>Work of Proof</th>
+        <th>Day Throughput</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Spring Boot Security</td>
+        <td>Missed CSRF</td>
+        <td>Integrated secure login</td>
+        <td>GitHub PR</td>
+        <td class="status-success">Success</td>
+      </tr>
+      <tr>
+        <td>React Lifecycle</td>
+        <td>Wrong useEffect dependency</td>
+        <td>Fixed infinite loop issue</td>
+        <td>Code demo</td>
+        <td class="status-success">Success</td>
+      </tr>
+      <tr>
+        <td>PostgreSQL setup</td>
+        <td>Didn't open port</td>
+        <td>Docker + DB failed</td>
+        <td>Screenshot + notes</td>
+        <td class="status-failure">Failure</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- tsParticles CDN -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+<script>
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
+    background: { color: { value: "#00000000" } },
+    particles: {
+      number: { value: 60 },
+      color: { value: "#00ffe1" },
+      shape: { type: "circle" },
+      opacity: { value: 0.6 },
+      size: { value: { min: 1, max: 4 } },
+      move: {
+        enable: true,
+        speed: 1,
+        direction: "none",
+        outModes: { default: "bounce" }
+      },
+      links: {
+        enable: true,
+        distance: 120,
+        color: "#00ffe1",
+        opacity: 0.3,
+        width: 1
+      }
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "repulse" },
+        onClick: { enable: true, mode: "push" }
+      },
+      modes: {
+        repulse: { distance: 80 },
+        push: { quantity: 4 }
+      }
+    },
+    detectRetina: true
+  });
+</script>
 
 </body>
 </html>
