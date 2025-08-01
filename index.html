@@ -1,40 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Tech Journey Log</title>
+  <meta charset="UTF-8" />
+  <title>My Tech Journal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300;500&display=swap');
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      box-sizing: border-box;
     }
 
-    header {
-      text-align: center;
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #ffffff;
       padding: 2rem;
-      font-size: 2rem;
-      color: #ffd700;
-      letter-spacing: 1px;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffe1;
+      text-shadow: 0 0 10px #00ffe1cc;
+      margin-bottom: 2rem;
     }
 
     .container {
-      max-width: 95%;
-      margin: auto;
-      padding: 2rem;
+      width: 95%;
+      max-width: 1200px;
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr) auto;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    input, select {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 10px #00ffe1aa;
+    }
+
+    .add-btn {
+      background-color: #00ffe1;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      transition: 0.3s ease;
+      box-shadow: 0 0 12px #00ffe1aa;
+    }
+
+    .add-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffe1;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 2rem;
+      margin-top: 1rem;
+      color: #eee;
     }
 
     th, td {
@@ -43,131 +95,101 @@
     }
 
     th {
-      font-size: 1.1rem;
       text-transform: uppercase;
+      font-size: 0.9rem;
       letter-spacing: 1px;
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #ffde59;
-    }
-
-    tr {
-      transition: background 0.3s ease;
-    }
-
-    tr:hover {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    input, select {
-      padding: 0.7rem;
-      margin: 0.2rem;
-      border: none;
-      border-radius: 8px;
-      width: 100%;
-      background: #eee;
-    }
-
-    .row-input {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr) auto;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .add-btn {
-      padding: 0.7rem 2rem;
-      background: #ffd700;
-      border: none;
+      color: #00ffe1;
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 10px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .add-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #ffd700aa;
+    tbody tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     .status-success {
-      color: limegreen;
+      color: #00ff6e;
       font-weight: bold;
     }
 
     .status-failure {
-      color: crimson;
+      color: #ff4b5c;
       font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .input-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>🚀 My Daily Tech Journey</header>
+  <h1>🚀 My Daily Tech Journal</h1>
 
-<div class="container">
-  <div class="row-input">
-    <input type="text" id="learned" placeholder="What I Learned">
-    <input type="text" id="mistakes" placeholder="Mistakes I Made">
-    <input type="text" id="desc" placeholder="Description">
-    <input type="text" id="proof" placeholder="Work of Proof">
-    <select id="throughput">
-      <option value="Success">Success</option>
-      <option value="Failure">Failure</option>
-    </select>
-    <button class="add-btn" onclick="addRow()">Add</button>
+  <div class="container">
+    <div class="input-row">
+      <input type="text" id="learned" placeholder="What I Learned">
+      <input type="text" id="mistakes" placeholder="Mistakes I Made">
+      <input type="text" id="desc" placeholder="Description">
+      <input type="text" id="proof" placeholder="Work of Proof">
+      <select id="throughput">
+        <option value="Success">Success</option>
+        <option value="Failure">Failure</option>
+      </select>
+      <button class="add-btn" onclick="addRow()">Add</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>What I Learned</th>
+          <th>Mistakes I Made</th>
+          <th>Description</th>
+          <th>Work of Proof</th>
+          <th>Day Throughput</th>
+        </tr>
+      </thead>
+      <tbody id="logTable">
+        <!-- Entries will be added here -->
+      </tbody>
+    </table>
   </div>
 
-  <table id="logTable">
-    <thead>
-      <tr>
-        <th>What I Learned</th>
-        <th>Mistakes I Made</th>
-        <th>Description</th>
-        <th>Work of Proof</th>
-        <th>Day Throughput</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Entries will appear here -->
-    </tbody>
-  </table>
-</div>
+  <script>
+    function addRow() {
+      const learned = document.getElementById("learned").value.trim();
+      const mistakes = document.getElementById("mistakes").value.trim();
+      const desc = document.getElementById("desc").value.trim();
+      const proof = document.getElementById("proof").value.trim();
+      const throughput = document.getElementById("throughput").value;
 
-<script>
-  function addRow() {
-    const learned = document.getElementById("learned").value.trim();
-    const mistakes = document.getElementById("mistakes").value.trim();
-    const desc = document.getElementById("desc").value.trim();
-    const proof = document.getElementById("proof").value.trim();
-    const throughput = document.getElementById("throughput").value;
+      if (!learned || !desc || !proof) {
+        alert("Please fill in required fields.");
+        return;
+      }
 
-    if (!learned || !desc || !proof) {
-      alert("Please fill in all required fields.");
-      return;
+      const table = document.getElementById("logTable");
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${learned}</td>
+        <td>${mistakes || '-'}</td>
+        <td>${desc}</td>
+        <td>${proof}</td>
+        <td class="${throughput === 'Success' ? 'status-success' : 'status-failure'}">${throughput}</td>
+      `;
+
+      table.appendChild(row);
+
+      document.getElementById("learned").value = "";
+      document.getElementById("mistakes").value = "";
+      document.getElementById("desc").value = "";
+      document.getElementById("proof").value = "";
+      document.getElementById("throughput").value = "Success";
     }
-
-    const table = document.getElementById("logTable").querySelector("tbody");
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-      <td>${learned}</td>
-      <td>${mistakes || '-'}</td>
-      <td>${desc}</td>
-      <td>${proof}</td>
-      <td class="${throughput === 'Success' ? 'status-success' : 'status-failure'}">${throughput}</td>
-    `;
-
-    table.appendChild(row);
-
-    // Clear inputs
-    document.getElementById("learned").value = "";
-    document.getElementById("mistakes").value = "";
-    document.getElementById("desc").value = "";
-    document.getElementById("proof").value = "";
-    document.getElementById("throughput").value = "Success";
-  }
-</script>
+  </script>
 
 </body>
 </html>
