@@ -4,49 +4,47 @@
   <meta charset="UTF-8" />
   <title>My Tech Journey Log</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300;500&display=swap');
 
-    * {
+  <!-- Fonts & Particles -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0f1c;
+      color: #00ffcc;
+      overflow-x: hidden;
     }
 
-    body, html {
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    #tsparticles {
+    #particles-js {
       position: fixed;
-      width: 100%;
+      top: 0;
+      left: 0;
       height: 100%;
+      width: 100%;
       z-index: -1;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 95%;
-      max-width: 1200px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      backdrop-filter: blur(12px);
-      padding: 3rem;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-      margin: 4rem auto;
-      color: #fff;
     }
 
     h1 {
       text-align: center;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
-      color: #00ffe1;
-      text-shadow: 0 0 15px #00ffe1aa;
-      margin-bottom: 2rem;
+      font-size: 3rem;
+      padding: 2rem 0 1rem;
+      text-shadow: 0 0 10px #00ffccaa;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(0, 255, 204, 0.05);
+      border: 1px solid #00ffcc44;
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px #00ffcc22;
     }
 
     table {
@@ -58,23 +56,16 @@
     th, td {
       padding: 1.2rem;
       text-align: left;
-      background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
-      backdrop-filter: blur(4px);
-      transition: background 0.3s;
+      background: rgba(0, 255, 204, 0.07);
+      box-shadow: 0 0 5px #00ffcc22;
     }
 
     th {
-      color: #00ffe1;
-      font-weight: 500;
-      font-size: 1rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    td {
-      font-size: 0.95rem;
+      font-size: 1rem;
+      color: #00ffe1;
+      background: rgba(0, 255, 204, 0.12);
     }
 
     td.status-success {
@@ -88,101 +79,105 @@
     }
 
     tr:hover td {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(0, 255, 204, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 1rem;
+      color: #00ffcc99;
     }
 
     @media (max-width: 768px) {
       table, th, td {
         font-size: 0.85rem;
       }
+
       h1 {
-        font-size: 1.7rem;
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
+  <div id="particles-js"></div>
 
-<div id="tsparticles"></div>
-
-<div class="container">
   <h1>🚀 My Daily Tech Journal</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>What I Learned</th>
-        <th>Mistakes I Made</th>
-        <th>Description</th>
-        <th>Work of Proof</th>
-        <th>Day Throughput</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Spring Boot Security</td>
-        <td>Missed CSRF</td>
-        <td>Integrated secure login</td>
-        <td>GitHub PR</td>
-        <td class="status-success">Success</td>
-      </tr>
-      <tr>
-        <td>React Lifecycle</td>
-        <td>Wrong useEffect dependency</td>
-        <td>Fixed infinite loop issue</td>
-        <td>Code demo</td>
-        <td class="status-success">Success</td>
-      </tr>
-      <tr>
-        <td>PostgreSQL setup</td>
-        <td>Didn't open port</td>
-        <td>Docker + DB failed</td>
-        <td>Screenshot + notes</td>
-        <td class="status-failure">Failure</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>What I Learned</th>
+          <th>Mistakes I Made</th>
+          <th>Description</th>
+          <th>Work of Proof</th>
+          <th>Day Throughput</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Spring Security JWT</td>
+          <td>Skipped token validation</td>
+          <td>Protected REST endpoints</td>
+          <td>GitHub commit</td>
+          <td class="status-success">Success</td>
+        </tr>
+        <tr>
+          <td>Docker Compose</td>
+          <td>Forgot env variables</td>
+          <td>Service dependencies failed</td>
+          <td>Screenshot + logs</td>
+          <td class="status-failure">Failure</td>
+        </tr>
+        <tr>
+          <td>React Props vs State</td>
+          <td>Used props as state</td>
+          <td>Refactored to use hooks</td>
+          <td>CodeSandbox demo</td>
+          <td class="status-success">Success</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<!-- tsParticles CDN -->
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
-<script>
-  tsParticles.load("tsparticles", {
-    fullScreen: { enable: false },
-    background: { color: { value: "#00000000" } },
-    particles: {
-      number: { value: 60 },
-      color: { value: "#00ffe1" },
-      shape: { type: "circle" },
-      opacity: { value: 0.6 },
-      size: { value: { min: 1, max: 4 } },
-      move: {
-        enable: true,
-        speed: 1,
-        direction: "none",
-        outModes: { default: "bounce" }
-      },
-      links: {
-        enable: true,
-        distance: 120,
-        color: "#00ffe1",
-        opacity: 0.3,
-        width: 1
-      }
-    },
-    interactivity: {
-      events: {
-        onHover: { enable: true, mode: "repulse" },
-        onClick: { enable: true, mode: "push" }
-      },
-      modes: {
-        repulse: { distance: 80 },
-        push: { quantity: 4 }
-      }
-    },
-    detectRetina: true
-  });
-</script>
+  <footer>Created by <strong>Likhita</strong> | GitHub & Dev Portfolio ❤️</footer>
 
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80 },
+        "color": { "value": "#00ffcc" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.25 },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 120,
+          "color": "#00ffcc",
+          "opacity": 0.3,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "out_mode": "bounce"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100 },
+          "push": { "quantity": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 </html>
