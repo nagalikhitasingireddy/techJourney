@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Tech Journey Log</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      font-size: 2rem;
+      color: #ffd700;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    }
+
+    .container {
+      max-width: 95%;
+      margin: auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+    }
+
+    th {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffde59;
+    }
+
+    tr {
+      transition: background 0.3s ease;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    input, select {
+      padding: 0.7rem;
+      margin: 0.2rem;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      background: #eee;
+    }
+
+    .row-input {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr) auto;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .add-btn {
+      padding: 0.7rem 2rem;
+      background: #ffd700;
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .add-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #ffd700aa;
+    }
+
+    .status-success {
+      color: limegreen;
+      font-weight: bold;
+    }
+
+    .status-failure {
+      color: crimson;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>🚀 My Daily Tech Journey</header>
+
+<div class="container">
+  <div class="row-input">
+    <input type="text" id="learned" placeholder="What I Learned">
+    <input type="text" id="mistakes" placeholder="Mistakes I Made">
+    <input type="text" id="desc" placeholder="Description">
+    <input type="text" id="proof" placeholder="Work of Proof">
+    <select id="throughput">
+      <option value="Success">Success</option>
+      <option value="Failure">Failure</option>
+    </select>
+    <button class="add-btn" onclick="addRow()">Add</button>
+  </div>
+
+  <table id="logTable">
+    <thead>
+      <tr>
+        <th>What I Learned</th>
+        <th>Mistakes I Made</th>
+        <th>Description</th>
+        <th>Work of Proof</th>
+        <th>Day Throughput</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Entries will appear here -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  function addRow() {
+    const learned = document.getElementById("learned").value.trim();
+    const mistakes = document.getElementById("mistakes").value.trim();
+    const desc = document.getElementById("desc").value.trim();
+    const proof = document.getElementById("proof").value.trim();
+    const throughput = document.getElementById("throughput").value;
+
+    if (!learned || !desc || !proof) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    const table = document.getElementById("logTable").querySelector("tbody");
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${learned}</td>
+      <td>${mistakes || '-'}</td>
+      <td>${desc}</td>
+      <td>${proof}</td>
+      <td class="${throughput === 'Success' ? 'status-success' : 'status-failure'}">${throughput}</td>
+    `;
+
+    table.appendChild(row);
+
+    // Clear inputs
+    document.getElementById("learned").value = "";
+    document.getElementById("mistakes").value = "";
+    document.getElementById("desc").value = "";
+    document.getElementById("proof").value = "";
+    document.getElementById("throughput").value = "Success";
+  }
+</script>
+
+</body>
+</html>
