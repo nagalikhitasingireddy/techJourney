@@ -57,7 +57,7 @@
 
     .card {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      grid-template-columns: repeat(6, 1fr);
       background: rgba(0, 255, 204, 0.07);
       border: 1px solid #00ffcc33;
       border-radius: 20px;
@@ -84,6 +84,7 @@
 
     .badge {
       align-self: center;
+      justify-self: center;
       padding: 0.5rem 1rem;
       border-radius: 20px;
       font-weight: bold;
@@ -135,10 +136,6 @@
 <div class="card-container">
   <div class="card">
     <div>
-      <h3>date</h3>
-      <p>01-aug-2025</p>
-    </div>
-    <div>
       <h3>What I Learned</h3>
       <p>React Hooks and State Management</p>
     </div>
@@ -152,9 +149,13 @@
     </div>
     <div>
       <h3>Description</h3>
-      <p>Deep dive into React hooks, understanding useEffect lifecycle.</p>
+      <p>Deep dive into React hooks and understanding lifecycle.</p>
     </div>
     <div class="badge success">Success</div>
+    <div>
+      <h3>Date</h3>
+      <p>01-Aug-2025</p>
+    </div>
   </div>
 
   <div class="card">
@@ -172,9 +173,13 @@
     </div>
     <div>
       <h3>Description</h3>
-      <p>Mastered layout systems for responsive design.</p>
+      <p>Built layouts using grid and flex for responsive design.</p>
     </div>
     <div class="badge success">Success</div>
+    <div>
+      <h3>Date</h3>
+      <p>31-Jul-2025</p>
+    </div>
   </div>
 
   <div class="card">
@@ -188,13 +193,17 @@
     </div>
     <div>
       <h3>Media</h3>
-      <img src="https://i.imgur.com/aa4oSJm.png" alt="Spring" class="media" />
+      <img src="https://i.imgur.com/aa4oSJm.png" alt="Spring Boot" class="media" />
     </div>
     <div>
       <h3>Description</h3>
-      <p>Successfully added token-based verification with JavaMailSender.</p>
+      <p>Implemented token-based email verification using JavaMailSender.</p>
     </div>
     <div class="badge failure">Failure</div>
+    <div>
+      <h3>Date</h3>
+      <p>30-Jul-2025</p>
+    </div>
   </div>
 </div>
 
@@ -208,7 +217,7 @@
   setInterval(updateTime, 1000);
   updateTime();
 
-  // Particle Background
+  // Particle background
   particlesJS("particles-js", {
     particles: {
       number: { value: 70 },
